@@ -7,7 +7,7 @@ module HoneypotCaptcha
     end
 
     def protect_from_spam
-      head :ok if honeypot_fields.any? { |f,l| !params[f].blank? }
+      head :ok if honeypot_fields.any? { |f,l| params[f].present? }
     end
 
     def self.included(base) # :nodoc:
